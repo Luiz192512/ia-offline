@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "IA Offline Portatil",
+    "language": "pt-BR"
+  },
+  "model": {
+    "path": "models/model.gguf",
+    "context_window": 2048,
+    "max_tokens": 256,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.9,
+    "repeat_penalty": 1.1
+  },
+  "runner": {
+    "backend": "llama.cpp",
+    "executable_windows": "runtime/llama.cpp/windows/llama-cli.exe",
+    "executable_linux": "runtime/llama.cpp/linux/llama-cli",
+    "base_args": [
+      "-m",
+      "{model}",
+      "-c",
+      "{context_window}",
+      "-n",
+      "{max_tokens}",
+      "--temp",
+      "{temperature}",
+      "--top-k",
+      "{top_k}",
+      "--top-p",
+      "{top_p}",
+      "--repeat-penalty",
+      "{repeat_penalty}",
+      "-ngl",
+      "0",
+      "-p",
+      "{prompt}"
+    ],
+    "extra_args": [],
+    "timeout_seconds": 120
+  },
+  "memory": {
+    "max_turns": 6,
+    "max_chars": 8000
+  },
+  "knowledge_base": {
+    "directory": "knowledge_base",
+    "max_files": 4,
+    "max_chars_per_file": 1200,
+    "enabled_extensions": [
+      ".md",
+      ".txt",
+      ".json",
+      ".csv"
+    ]
+  },
+  "prompt": {
+    "system_prompt_file": "config/system_prompt.txt",
+    "assistant_suffix": "Responda em portugues do Brasil, com clareza, objetividade e utilidade pratica. Se houver incerteza, diga explicitamente. Se a pergunta for tecnica, explique em passos."
+  },
+  "logging": {
+    "enabled": false,
+    "directory": "logs"
+  }
+}

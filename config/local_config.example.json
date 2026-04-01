@@ -1,0 +1,15 @@
+{
+  "model": {
+    "path": "models/model.gguf",
+    "context_window": 2048,
+    "max_tokens": 192
+  },
+  "runner": {
+    "executable_windows": "runtime/llama.cpp/windows/llama-cli.exe",
+    "executable_linux": "runtime/llama.cpp/linux/llama-cli",
+    "extra_args": []
+  },
+  "logging": {
+    "enabled": false
+  }
+}
